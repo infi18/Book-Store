@@ -5,16 +5,16 @@ database=Database("books.db")
 
 def view_command():
     list1.delete(0,END)
-    for rows in Database.view():
+    for rows in database.view():
         list1.insert(END, rows)
 
 def search_command():
     list1.delete(0, END)
-    for rows in Database.search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()):
+    for rows in database.search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()):
         list1.insert(END, rows)
 
 def add_command():
-    Database.insert(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    database.insert(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
     list1.delete(0,END)
     list1.insert(END,(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
 
@@ -36,10 +36,10 @@ def get_selected_row(event):
         pass
 
 def delete_command():
-    Database.delete(selected_tuple[0])
+    database.delete(selected_tuple[0])
 
 def update_command():
-    Database.update(selected_tuple[0],title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    database.update(selected_tuple[0],title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
 
 
 window=Tk()
